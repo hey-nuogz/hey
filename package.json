@@ -1,0 +1,45 @@
+{
+	"name": "tell",
+	"version": "1.0.0",
+	"description": "",
+	"author": "Nuogz",
+	"license": "LGPL-3.0-or-later",
+	"main": "index.js",
+	"type": "module",
+	"engines": {
+		"node": ">=14.18.1"
+	},
+	"scripts": {
+		"开发": "vite",
+		"构建": "vite build",
+		"预览": "http-server dist -a 127.0.0.1 -p 14785"
+	},
+	"dependencies": {
+		"@nuogz/desire": "^4.11.15",
+		"@nuogz/hades": "^3.5.0",
+		"@nuogz/poseidon": "^5.0.0",
+		"axios": "^0.26.1",
+		"commander": "^9.1.0",
+		"fs-extra": "^10.0.1",
+		"fs-readdir-recursive": "^1.1.0",
+		"moment": "^2.29.1"
+	},
+	"devDependencies": {
+		"@fortawesome/fontawesome-svg-core": "^6.1.1",
+		"@fortawesome/free-regular-svg-icons": "^6.1.1",
+		"@fortawesome/free-solid-svg-icons": "^6.1.1",
+		"@fortawesome/vue-fontawesome": "^3.0.0-5",
+		"@howdyjs/mouse-menu": "^2.0.5",
+		"@vitejs/plugin-vue": "^2.2.4",
+		"autoprefixer": "^10.4.4",
+		"clipboard": "^2.0.10",
+		"eslint": "^8.11.0",
+		"eslint-plugin-vue": "^8.5.0",
+		"postcss": "^8.4.12",
+		"sass": "^1.49.9",
+		"tailwindcss": "^3.0.23",
+		"tippy.js": "^6.3.7",
+		"vite": "^2.8.6",
+		"vue": "^3.2.31"
+	}
+}
