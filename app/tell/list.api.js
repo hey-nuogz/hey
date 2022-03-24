@@ -4,11 +4,8 @@ import D from '../../lib/data.js';
 
 export const optionAPI = { parseProfile: true };
 export const method = 'get';
-export const handle = (raw, ctx) => {
-	const { date = Moment().format('YYMMDD') } = raw;
-
-	const { _who: who } = raw;
-
+export const handle = raw => {
+	const { _who: who, date = Moment().format('YYMMDD') } = raw;
 
 
 	return D[`${date}-${who}`] ?? [];
