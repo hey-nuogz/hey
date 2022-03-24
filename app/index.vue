@@ -50,7 +50,7 @@
 	import TabAdmin from './lib/TabAdmin.js';
 
 
-	document.title = 'Tell';
+	document.title = 'Hey!';
 
 
 	const app = inject('app');
@@ -142,7 +142,7 @@
 		wock.cast('profile/wock-user', who);
 		wock.reopen = () => wock.cast('profile/wock-user', who);
 
-		TA.value.addIcon('主页', 'home', 'home', 'tell-List');
+		TA.value.addIcon('主页', 'home', 'home', 'hey-List');
 	};
 
 

@@ -1,5 +1,5 @@
 {
-	"name": "tell",
+	"name": "@nuogz/hey",
 	"version": "1.0.0",
 	"description": "",
 	"author": "Nuogz",
@@ -10,9 +10,9 @@
 		"node": ">=14.18.1"
 	},
 	"scripts": {
-		"开发": "vite",
-		"构建": "vite build",
-		"预览": "http-server dist -a 127.0.0.1 -p 14785"
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "http-server dist -a 127.0.0.1 -p 14785"
 	},
 	"dependencies": {
 		"@nuogz/desire": "^4.11.15",
