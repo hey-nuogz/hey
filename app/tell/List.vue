@@ -8,7 +8,7 @@
 					<p-push @click="actionPush(push, app)">
 						<p-title>○ {{push.title}}</p-title>
 						<p-body>{{push.body}}</p-body>
-						<p-body>{{push.time}}</p-body>
+						<p-time>{{Moment(push.time).fromNow()}}</p-time>
 					</p-push>
 				</template>
 			</p-app>
@@ -18,6 +18,7 @@
 
 <script setup>
 	import { inject, ref } from 'vue';
+	import Moment from '../lib/Moment.js';
 
 	const wock = inject('$wock');
 
@@ -36,22 +37,20 @@
 	};
 
 
-	wock.add('new-push', (push,app) => {
+	wock.add('new-push', (push, app) => {
 		(pushesAll.value[app] ?? (pushesAll.value[app] = [])).unshift(push);
 
 		const notification = new Notification(push.title, {
-			body: push.data,
+			body: push.body,
 			icon: push.icon,
 			badge: push.badge,
 			data: push.data,
-			tag: 'app'
+			renotify: true,
+			tag: push.tag ?? app
 		});
 
-		notification.onclick = () => actionPush(push, app);
+		notification.addEventListener('click', () => actionPush(push, app));
 	});
-
-
-
 </script>
 
 <style lang="sass" scoped>
@@ -65,5 +64,8 @@ p-push
 		@apply block mb-4
 
 	p-body
-		@apply block m-2
+		@apply block m-4 mb-4
+
+	p-time
+		@apply block m-4 mb-0 text-sm text-gray-400
 </style>

@@ -49,6 +49,7 @@ export const handle = (raw, ctx, route, $) => {
 		image: data.image,
 		type: data.type ?? 'link',
 		data: data.data,
+		tag: data.tag,
 	};
 
 
