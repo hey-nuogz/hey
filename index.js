@@ -37,6 +37,6 @@ new Server({
 	wock: {
 		disable: false,
 		route: 'wock',
-		ping: false,
+		ping: true,
 	},
 }).start();

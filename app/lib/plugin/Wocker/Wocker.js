@@ -9,6 +9,7 @@ export const install = function(app) {
 		(console || {}).error,
 	);
 
+	wock.ping = true;
 	wock.reopen = true;
 	wock.open('初始化');
 
