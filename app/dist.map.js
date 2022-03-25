@@ -1,3 +1,3 @@
 export default [
-	{ route: '/', path: '../dist' },
+	{ route: '/', path: '../dist', option: { maxage: 1000 * 60 * 60 * 6 } },
 ];
