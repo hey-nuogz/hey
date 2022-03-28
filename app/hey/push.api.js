@@ -13,7 +13,6 @@ export const handle = (data, wock) => {
 	if(!token) { throw Error(`无推送权限`); }
 
 
-
 	const type = `${Moment().format('YYMMDD')}-${who}`;
 	const fileData = resolve(D.$.dirConfig, `${D.$.prefixFile}.${type}.json`);
 
@@ -27,15 +26,11 @@ export const handle = (data, wock) => {
 		image: data.image,
 		type: data.type ?? 'link',
 		data: data.data,
-		tag: `${data.app}|${token}|${data.tag ?? ''}`,
+		tag: `${app}|${token}|${data.tag ?? ''}`,
 	};
 
 
-	D.$.edit(type, data => {
-		const datas = data[app] ?? (data[app] = []);
-
-		datas.unshift(push);
-	});
+	D.$.edit(type, data => (data[token] ?? (data[token] = [])).unshift(push) && void 0);
 
 	wock.wocker.wockConnections.forEach(wockConnection => {
 		if(wockConnection.who == who && wockConnection.type == 'web') {

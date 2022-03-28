@@ -37,9 +37,9 @@ export const handle = (app, token_, wock) => {
 		throw error;
 	}
 
-
 	wock.who = who;
 	wock.token = token;
 
+	wock.cast('authed');
 	wock.cast('start');
 };

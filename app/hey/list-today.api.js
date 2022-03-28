@@ -8,5 +8,5 @@ export const handle = raw => {
 	const { _who: who, date = Moment().format('YYMMDD') } = raw;
 
 
-	return D[`${date}-${who}`] ?? [];
+	return D[`${date}-${who}`] ?? {};
 };

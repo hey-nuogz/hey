@@ -2,13 +2,13 @@
 	<module>
 		<template v-for="(pushes, app) of pushesAll" :key="`push-${app}`">
 			<p-app>
-				<p-title>● {{app}}</p-title>
+				<p-title>● {{profile.key[app]?.name || profile.key[app]?.app}}</p-title>
 
 				<template v-for="(push, indexPush) of pushes" :key="`push-${app}-${indexPush}`">
 					<p-push @click="actionPush(push, app)">
 						<p-title>○ {{push.title}}</p-title>
 						<p-body>{{push.body}}</p-body>
-						<p-time>{{Moment(push.time).fromNow()}}</p-time>
+						<p-time :title="push.time">{{Moment(push.time).fromNow()}}</p-time>
 					</p-push>
 				</template>
 			</p-app>
@@ -23,6 +23,7 @@
 
 	const wock = inject('$wock');
 	const get = inject('$get');
+	const profile = inject('profile');
 
 
 	const pushesAll = ref({});
@@ -39,24 +40,23 @@
 	};
 
 
-	wock.add('new-push', (push, app) => {
-		(pushesAll.value[app] ?? (pushesAll.value[app] = [])).unshift(push);
+	onMounted(async () => {
+		pushesAll.value = await get('hey/list-today');
 
-		const notification = new Notification(push.title, {
-			body: push.body,
-			icon: push.icon,
-			badge: push.badge,
-			data: push.data,
-			renotify: true,
-			tag: push.tag ?? app
+		wock.add('new-push', (push, app) => {
+			(pushesAll.value[app] ?? (pushesAll.value[app] = [])).unshift(push);
+
+			const notification = new Notification(push.title, {
+				body: push.body,
+				icon: push.icon,
+				badge: push.badge,
+				data: push.data,
+				renotify: true,
+				tag: push.tag ?? app
+			});
+
+			notification.addEventListener('click', () => actionPush(push, app));
 		});
-
-		notification.addEventListener('click', () => actionPush(push, app));
-	});
-
-
-	onMounted(() => {
-		get('hey/list-today');
 	});
 
 
