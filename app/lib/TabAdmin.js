@@ -36,7 +36,7 @@ class TabAdmin {
 	}
 
 
-	addIcon(title, icon, type_, module, ...params) {
+	addIcon(title, icon, type_, module, delay = false, ...params) {
 		const id = randomString();
 
 		const [type, ...extras] = type_.split('|');
@@ -46,7 +46,7 @@ class TabAdmin {
 			(this.map[id] = new Tab(id, title, 'icon', icon, type, module, extras.includes('hidden')));
 
 
-		if(tab) { this.change(tab, ...params); }
+		if(tab && !delay) { this.change(tab, ...params); }
 
 		return tab;
 	}

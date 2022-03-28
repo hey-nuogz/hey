@@ -47,8 +47,8 @@ const rcNode = {
 
 
 const parseKey = (raw, target) => { const key = raw.split(/(?=[A-Z])/).join('-').toLowerCase(); if(key != raw) { target[key] = target[raw]; delete target[raw]; } };
-Object.keys(rcNode.rules).forEach(key => parseKey(key, rcNode.rules));
-Object.keys(rcBrowser.rules).forEach(key => parseKey(key, rcBrowser.rules));
+Object.keys(rcNode.rules ?? {}).forEach(key => parseKey(key, rcNode.rules));
+Object.keys(rcBrowser.rules ?? {}).forEach(key => parseKey(key, rcBrowser.rules));
 
 
 module.exports = rcNode;

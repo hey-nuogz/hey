@@ -1,4 +1,5 @@
-import C from '../../lib/global/config.js';
+import U from '../../lib/user.js';
+
 
 export const method = 'get';
-export const handle = raw => Object.keys(C.profile);
+export const handle = raw => U.$.getTypesExist();

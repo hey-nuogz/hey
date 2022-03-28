@@ -10,19 +10,20 @@
 		"node": ">=14.18.1"
 	},
 	"scripts": {
-		"dev": "vite",
+		"develop": "vite",
 		"build": "vite build",
 		"preview": "http-server dist -a 127.0.0.1 -p 14785"
 	},
 	"dependencies": {
 		"@nuogz/desire": "^4.11.15",
 		"@nuogz/hades": "^3.5.0",
-		"@nuogz/poseidon": "^5.0.0",
+		"@nuogz/poseidon": "^6.1.0",
 		"axios": "^0.26.1",
 		"commander": "^9.1.0",
 		"fs-extra": "^10.0.1",
 		"fs-readdir-recursive": "^1.1.0",
-		"moment": "^2.29.1"
+		"moment": "^2.29.1",
+		"uuid": "^8.3.2"
 	},
 	"devDependencies": {
 		"@fortawesome/fontawesome-svg-core": "^6.1.1",
@@ -33,7 +34,7 @@
 		"@vitejs/plugin-vue": "^2.2.4",
 		"autoprefixer": "^10.4.4",
 		"clipboard": "^2.0.10",
-		"eslint": "^8.11.0",
+		"eslint": "^8.12.0",
 		"eslint-plugin-vue": "^8.5.0",
 		"postcss": "^8.4.12",
 		"sass": "^1.49.9",

@@ -2,12 +2,12 @@ import AS from 'assert';
 
 import Moment from 'moment';
 
-import C from '../../lib/global/config.js';
+import U from '../../lib/user.js';
 
 
 export const method = 'get';
 export const handle = (raw, ctx) => {
-	const profile = C.profile[raw.who];
+	const profile = U[raw.who];
 
 	AS(profile, `未找到~[档案]~{${raw.who}}`);
 

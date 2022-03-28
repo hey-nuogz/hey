@@ -17,13 +17,10 @@
 </template>
 
 <script setup>
-	import { inject, onMounted, ref } from 'vue';
+	import { inject, ref } from 'vue';
 	import Moment from '../lib/Moment.js';
 
-
 	const wock = inject('$wock');
-	const get = inject('$get');
-
 
 	const pushesAll = ref({});
 
@@ -53,20 +50,6 @@
 
 		notification.addEventListener('click', () => actionPush(push, app));
 	});
-
-
-	onMounted(() => {
-		get('hey/list-today');
-	});
-
-
-
-
-
-	/** @type {import('vue').Ref<import('../../../lib/TabAdmin.js').default>} */
-	// const TA = inject('tabAdmin');
-	// onMounted(() => TA.value.emitChange());
-	// TA.value.addChanger('number', tab => { });
 </script>
 
 <style lang="sass" scoped>

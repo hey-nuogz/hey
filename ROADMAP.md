@@ -1,10 +1,10 @@
 # ROADMAP
 ## I want to do
-- [ ] Change name to `hey` from `tell`
-- [ ] Upgrade `staff` `pnpm-version` to `npm-package-version`
+- [x] Change name to `hey` from `tell`
+- [x] Upgrade `staff` `pnpm-version` to `npm-package-version`
 - [ ] Simple I18N framework
 - [ ] Simple README.md
-- [ ] Synchronize all repo to `github` from `gitee`, and public them
+- [x] Synchronize all repo to `github` from `gitee`, and public them
 - [ ] Improve `staff` manage, include keyPair manage
 - [ ] Improve multi-user
 - [ ] use `websocket` for moniting `staff`

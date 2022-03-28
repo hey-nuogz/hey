@@ -22,8 +22,6 @@ class Wock {
 	open(reason) {
 		if(this.opening) { return; }
 
-		this.logInfo(`Wock将打开，原因：${reason || '无'}，URL：${this.url}`);
-
 		this.wock = new WebSocket(this.url);
 
 		let pingOut;
@@ -62,6 +60,8 @@ class Wock {
 		return new Promise(resolve => {
 			this.wock.addEventListener('open', () => {
 				this.opening = true;
+
+				this.logInfo(`Wock已打开，原因：${reason ?? '无'}，URL：${this.url}`);
 
 				this.wock.cast = (type, ...data) => {
 					try {
