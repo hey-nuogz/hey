@@ -143,7 +143,7 @@
 		wock.reopen = () => wock.cast('profile/auth-user', who);
 
 		TA.value.addIcon('主页', 'home', 'home', 'hey-List');
-		TA.value.addIcon('主页', 'cogs', 'home', 'hey-Config', true);
+		// TA.value.addIcon('主页', 'cogs', 'home', 'hey-Config', true);
 	};
 
 

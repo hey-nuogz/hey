@@ -1,70 +1,9 @@
 <template>
-	<module>
-		<template v-for="(pushes, app) of pushesAll" :key="`push-${app}`">
-			<p-app>
-				<p-title>● {{app}}</p-title>
-
-				<template v-for="(push, indexPush) of pushes" :key="`push-${app}-${indexPush}`">
-					<p-push @click="actionPush(push, app)">
-						<p-title>○ {{push.title}}</p-title>
-						<p-body>{{push.body}}</p-body>
-						<p-time>{{Moment(push.time).fromNow()}}</p-time>
-					</p-push>
-				</template>
-			</p-app>
-		</template>
-	</module>
+	<module />
 </template>
 
 <script setup>
-	import { inject, ref } from 'vue';
-	import Moment from '../lib/Moment.js';
-
-	const wock = inject('$wock');
-
-	const pushesAll = ref({});
-
-
-	const handles = {
-		link(link) { if(link) { window.open(link); } }
-	};
-
-	const actionPush = (push, app) => {
-		const handle = handles[push.type];
-
-		if(typeof handle == 'function') { handle(push.data, push, app); }
-	};
-
-
-	wock.add('new-push', (push, app) => {
-		(pushesAll.value[app] ?? (pushesAll.value[app] = [])).unshift(push);
-
-		const notification = new Notification(push.title, {
-			body: push.body,
-			icon: push.icon,
-			badge: push.badge,
-			data: push.data,
-			renotify: true,
-			tag: push.tag ?? app
-		});
-
-		notification.addEventListener('click', () => actionPush(push, app));
-	});
 </script>
 
 <style lang="sass" scoped>
-p-app
-	@apply block w-full p-2
-p-push
-	@apply block bg-blue-100 m-4 mb-8 p-4 shadow-mdd rounded-md cursor-pointer
-	width: calc(100% - 2rem)
-
-	p-title
-		@apply block mb-4
-
-	p-body
-		@apply block m-4 mb-4
-
-	p-time
-		@apply block m-4 mb-0 text-sm text-gray-400
 </style>

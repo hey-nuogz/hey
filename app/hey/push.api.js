@@ -26,7 +26,7 @@ export const handle = (data, wock) => {
 		image: data.image,
 		type: data.type ?? 'link',
 		data: data.data,
-		tag: `${app}|${token}|${data.tag ?? ''}`,
+		tag: data.tag
 	};
 
 
@@ -34,7 +34,7 @@ export const handle = (data, wock) => {
 
 	wock.wocker.wockConnections.forEach(wockConnection => {
 		if(wockConnection.who == who && wockConnection.type == 'web') {
-			wockConnection.cast('new-push', push, app);
+			wockConnection.cast('new-push', push, app, token);
 		}
 	});
 };

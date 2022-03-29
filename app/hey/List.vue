@@ -1,14 +1,15 @@
 <template>
 	<module>
+		<Timer v-model="date" timer param="YD" align="center" label="消息日期" @update:model-value="query" />
 		<template v-for="(pushes, app) of pushesAll" :key="`push-${app}`">
 			<p-app>
-				<p-title>● {{profile.key[app]?.name || profile.key[app]?.app}}</p-title>
+				<p-app-title>● {{profile.key[app]?.name || profile.key[app]?.app}}</p-app-title>
 
 				<template v-for="(push, indexPush) of pushes" :key="`push-${app}-${indexPush}`">
 					<p-push @click="actionPush(push, app)">
 						<p-title>○ {{push.title}}</p-title>
 						<p-body>{{push.body}}</p-body>
-						<p-time :title="push.time">{{Moment(push.time).fromNow()}}</p-time>
+						<p-time :title="push.time">{{push.fromNow ?? ''}}</p-time>
 					</p-push>
 				</template>
 			</p-app>
@@ -20,6 +21,8 @@
 	import { inject, onMounted, ref } from 'vue';
 	import Moment from '../lib/Moment.js';
 
+	import Timer from '../lib/comp/Timer.vue';
+
 
 	const wock = inject('$wock');
 	const get = inject('$get');
@@ -27,6 +30,7 @@
 
 
 	const pushesAll = ref({});
+	const date = ref(Moment().format('YYYY-MM-DD'));
 
 
 	const handles = {
@@ -40,25 +44,44 @@
 	};
 
 
+	const query = async () => {
+		pushesAll.value = await get('hey/list', { date: Moment(date.value).format('YYMMDD') });
+
+		updateFormNow();
+	};
+
+
+	const updateFormNow = () => {
+		for(const pushes of Object.values(pushesAll.value)) {
+			for(const push of pushes) {
+				push.fromNow = Moment(push.time).fromNow();
+			}
+		}
+	};
+	onMounted(() => {
+		setInterval(updateFormNow, 1000 * 10);
+	});
+
+
 	onMounted(async () => {
-		pushesAll.value = await get('hey/list-today');
+		query();
 
-		wock.add('new-push', (push, app) => {
-			(pushesAll.value[app] ?? (pushesAll.value[app] = [])).unshift(push);
 
-			const notification = new Notification(push.title, {
+		wock.add('new-push', (push, app, token) => {
+			(pushesAll.value[token] ?? (pushesAll.value[token] = [])).unshift(push);
+
+			const notification = new Notification(`嘿！${push.title}`, {
 				body: push.body,
 				icon: push.icon,
 				badge: push.badge,
 				data: push.data,
 				renotify: true,
-				tag: push.tag ?? app
+				tag: `${app}|${token}|${push.tag ?? ''}`
 			});
 
 			notification.addEventListener('click', () => actionPush(push, app));
 		});
 	});
-
 
 
 
@@ -70,11 +93,21 @@
 </script>
 
 <style lang="sass" scoped>
+[timer]
+	@apply block m-4 w-60
+
 p-app
 	@apply block w-full p-2
+
+p-app-title
+	@apply block
+
 p-push
-	@apply block bg-blue-100 m-4 mb-8 p-4 shadow-mdd rounded-md cursor-pointer
-	width: calc(100% - 2rem)
+	@apply inblock bg-blue-100 m-4 mb-8 p-4 shadow-mdd rounded-md cursor-pointer
+	width: calc(25% - 2rem)
+
+	&:hover
+		@apply bg-blue-200
 
 	p-title
 		@apply block mb-4
