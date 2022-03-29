@@ -1,6 +1,6 @@
 {
 	"name": "@hey/hey",
-	"version": "1.5.0",
+	"version": "1.5.1",
 	"description": "",
 	"author": "Nuogz",
 	"license": "LGPL-3.0-or-later",
@@ -15,7 +15,7 @@
 		"preview": "http-server dist -a 127.0.0.1 -p 14785"
 	},
 	"dependencies": {
-		"@nuogz/desire": "^4.11.15",
+		"@nuogz/desire": "^4.11.16",
 		"@nuogz/hades": "^3.5.0",
 		"@nuogz/poseidon": "^6.1.0",
 		"axios": "^0.26.1",

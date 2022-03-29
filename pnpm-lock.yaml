@@ -6,7 +6,7 @@ specifiers:
   '@fortawesome/free-solid-svg-icons': ^6.1.1
   '@fortawesome/vue-fontawesome': ^3.0.0-5
   '@howdyjs/mouse-menu': ^2.0.5
-  '@nuogz/desire': ^4.11.15
+  '@nuogz/desire': ^4.11.16
   '@nuogz/hades': ^3.5.0
   '@nuogz/poseidon': ^6.1.0
   '@vitejs/plugin-vue': ^2.2.4
@@ -28,7 +28,7 @@ specifiers:
   vue: ^3.2.31
 
 dependencies:
-  '@nuogz/desire': 4.11.15
+  '@nuogz/desire': 4.11.16
   '@nuogz/hades': 3.5.0
   '@nuogz/poseidon': 6.1.0
   axios: 0.26.1
@@ -203,8 +203,8 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@nuogz/desire-harb-default/4.9.5:
-    resolution: {integrity: sha512-m4rYpdxuz4Hvy7KcGtYdggB7v82FrW9QG+NO6RPYs7XUlvI6ZoudFuZOmTxgarhWhUH6bscT4uzsygMHkx6WDw==}
+  /@nuogz/desire-harb-default/4.9.6:
+    resolution: {integrity: sha512-JbF9xUK8vA05wP2+GHVmMwYPncUgkZ4Y0mtxHVFIuocNj6k5kqY8uY+PggiFfqyvKFxOfkd7vNNJ5MSbUP0Feg==}
     engines: {node: '>=14.18.1'}
     dependencies:
       '@koa/multer': 3.0.0_multer@1.4.4
@@ -222,12 +222,12 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@nuogz/desire/4.11.15:
-    resolution: {integrity: sha512-3vQ4kEnyc5BzyUPK2PRZqe/KCP0i6WheSpqyrkLy9mVR2Ru5s9Lm1bDZrrxm5msekBVHwzkYeDNRP7Z6F2J5zQ==}
+  /@nuogz/desire/4.11.16:
+    resolution: {integrity: sha512-Fg/A4iDJts27JNKvEvrEY6KypcetFFOr64tuXEk567qPm7pBRnxgOqQt7BoNdFa6XybV2qaOCatLFzaAAl9NGQ==}
     engines: {node: '>=14.18.1'}
     dependencies:
       '@koa/cors': 3.2.0
-      '@nuogz/desire-harb-default': 4.9.5
+      '@nuogz/desire-harb-default': 4.9.6
       koa: 2.13.4
       koa-bodyparser: 4.3.0
       koa-compress: 5.1.0
@@ -472,7 +472,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.20.2
-      caniuse-lite: 1.0.30001320
+      caniuse-lite: 1.0.30001322
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -524,8 +524,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001320
-      electron-to-chromium: 1.4.96
+      caniuse-lite: 1.0.30001322
+      electron-to-chromium: 1.4.97
       escalade: 3.1.1
       node-releases: 2.0.2
       picocolors: 1.0.0
@@ -573,8 +573,8 @@ packages:
     engines: {node: '>= 6'}
     dev: true
 
-  /caniuse-lite/1.0.30001320:
-    resolution: {integrity: sha512-MWPzG54AGdo3nWx7zHZTefseM5Y1ccM7hlQKHRqJkPozUaw3hNbBTMmLn16GG2FUzjR13Cr3NPfhIieX5PzXDA==}
+  /caniuse-lite/1.0.30001322:
+    resolution: {integrity: sha512-neRmrmIrCGuMnxGSoh+x7zYtQFFgnSY2jaomjU56sCkTA6JINqQrxutF459JpWcWRajvoyn95sOXq4Pqrnyjew==}
     dev: true
 
   /chalk/2.4.2:
@@ -839,8 +839,8 @@ packages:
     resolution: {integrity: sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=}
     dev: false
 
-  /electron-to-chromium/1.4.96:
-    resolution: {integrity: sha512-DPNjvNGPabv6FcyjzLAN4C0psN/GgD9rSGvMTuv81SeXG/EX3mCz0wiw9N1tUEnfQXYCJi3H8M0oFPRziZh7rw==}
+  /electron-to-chromium/1.4.97:
+    resolution: {integrity: sha512-vqSu7Qn6o5E1uAJQxmq2U69aBhBTxUAXMuT5Sm3jj8kEJciuUcKciktLuTPFSRlwSdNyeu9qah8Nzy9JyxefCw==}
     dev: true
 
   /emoji-regex/8.0.0:
