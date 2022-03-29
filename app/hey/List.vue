@@ -1,12 +1,12 @@
 <template>
 	<module>
 		<Timer v-model="date" timer param="YD" align="center" label="消息日期" @update:model-value="query" />
-		<template v-for="(pushes, app) of pushesAll" :key="`push-${app}`">
+		<template v-for="(pushes, token) of pushesAll" :key="`push-${token}`">
 			<p-app>
-				<p-app-title>● {{profile.key[app]?.name || profile.key[app]?.app}}</p-app-title>
+				<p-app-title>● {{profile.key[token]?.name || profile.key[token]?.app}}</p-app-title>
 
-				<template v-for="(push, indexPush) of pushes" :key="`push-${app}-${indexPush}`">
-					<p-push @click="actionPush(push, app)">
+				<template v-for="(push, indexPush) of pushes" :key="`push-${token}-${indexPush}`">
+					<p-push @click.exact="actionPush(push, token)" @click.ctrl="renotifyPush(push, token)">
 						<p-title>○ {{push.title}}</p-title>
 						<p-body>{{push.body}}</p-body>
 						<p-time :title="push.time">{{push.fromNow ?? ''}}</p-time>
@@ -41,6 +41,16 @@
 		const handle = handles[push.type];
 
 		if(typeof handle == 'function') { handle(push.data, push, app); }
+	};
+	const renotifyPush = (push, token) => {
+		new Notification(`嘿！${push.title}`, {
+			body: push.body,
+			icon: push.icon,
+			badge: push.badge,
+			data: push.data,
+			renotify: true,
+			tag: `${profile.value.key[token]?.app}|${token}|${push.tag ?? ''}`
+		});
 	};
 
 
