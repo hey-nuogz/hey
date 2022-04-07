@@ -3,12 +3,12 @@
 		<Timer v-model="date" timer param="YD" align="center" label="消息日期" @update:model-value="query" />
 		<template v-for="(pushes, token) of pushesAll" :key="`push-${token}`">
 			<p-app>
-				<p-app-title>● {{profile.key[token]?.name || profile.key[token]?.app}}</p-app-title>
+				<p-app-title>○ {{profile.key[token]?.name || profile.key[token]?.app}}</p-app-title>
 
 				<template v-for="(push, indexPush) of pushes" :key="`push-${token}-${indexPush}`">
 					<p-push @click.exact="actionPush(push, token)" @click.ctrl="renotifyPush(push, token)">
-						<p-title>○ {{push.title}}</p-title>
-						<p-body>{{push.body}}</p-body>
+						<p-title :title="push.title">● {{push.title}}</p-title>
+						<p-body :title="push.body">{{push.body}}</p-body>
 						<p-time :title="push.time">{{push.fromNow ?? ''}}</p-time>
 					</p-push>
 				</template>
@@ -120,10 +120,10 @@ p-push
 		@apply bg-blue-200
 
 	p-title
-		@apply block mb-4
+		@apply block mb-4 elli
 
 	p-body
-		@apply block m-4 mb-4
+		@apply block m-4 mb-4 elli
 
 	p-time
 		@apply block m-4 mb-0 text-sm text-gray-400
